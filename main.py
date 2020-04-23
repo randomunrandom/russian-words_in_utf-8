@@ -14,8 +14,7 @@ out_file = root_path / "russian_utf-8.txt"
 if out_file.exists():
     out_file.unlink()
 
-with src_file.open("r", encoding="windows-1251") as in_file:
-    for line in tqdm(in_file.readlines()):
+with src_file.open("r", encoding="windows-1251") as src, out_file.open("w", encoding="utf-8") as out:
+    for line in tqdm(src.readlines()):
         line = line.strip("- \n")
-        with out_file.open("a", encoding="utf-8") as out:
-            out.write(line + "\n")
+        out.write(line + "\n")
